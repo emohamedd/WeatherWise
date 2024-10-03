@@ -174,7 +174,7 @@ const App = () => {
                 Wind <span className="ml-2">{data.wind.speed} m/s</span>
             </div>
           </div>
-=          <div className="flex justify-between pb-10">
+         <div className="flex justify-between pb-10">
             <div className="flex items-center gap-x-2">
               <div >Sunrise</div>
               <span className="ml-2">{new Date(data.sys.sunrise * 1000).toLocaleTimeString()}</span>
