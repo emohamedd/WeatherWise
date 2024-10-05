@@ -17,3 +17,5 @@ This is a weather application built with **React**, **Axios**, and the **OpenWea
 - **API:** OpenWeather API
 - **HTTP Client:** Axios
 - **Geolocation:** HTML5 Geolocation API
+
+![Screenshot from 2024-10-05 19-22-47](https://github.com/user-attachments/assets/9e4f5c77-b6a7-418f-9d7f-b5c7ae55dbea)
