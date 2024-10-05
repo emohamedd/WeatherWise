@@ -2,21 +2,50 @@
 @tailwind components;
 @tailwind utilities;
 
+.clear-sky {
+  background: url('../assets/clear-sky.png');
+  background-size: cover;
+  background-position: center;
+}
+
+.cloudy {
+  background: url('../assets/cloudy-sky.png');
+  background-size: cover;
+  background-position: center;
+}
+
+.rainy {
+  background: url('../assets/rainy.png');
+  background-size: cover;
+  background-position: center;
+}
+
+.snow {
+  background: url('../assets/snow.png');
+  background-size: cover;
+  background-position: center;
+}
+
+.thunderstorm {
+  background: url('../assets/thunder.jpeg');
+  background-size: cover;
+  background-position: center;
+}
+
+.haze {
+  background: url('../assets/haze.jpg');
+  background-size: cover;
+  background-position: center;
+}
 
 .body {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  background: rgb(0, 0, 0);
-  background: linear-gradient(180deg, rgb(0, 0, 0) 0%, rgba(0,97,130,1) 81%);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
   width: 100%;
   height: 100vh;
 }
-
 .card {
   width: 100%; 
   max-width: 450px; 

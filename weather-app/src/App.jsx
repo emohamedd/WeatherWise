@@ -26,12 +26,13 @@ const APIkey = "f698eeeb716e8341f092a37cdb3d58a5";
 const App = () => {
   const [data, setData] = useState(null);
   const [location, setLocation] = useState("Maroc");
+  const [weatherClass, setWeatherClass] = useState("clear-sky");
 
   useEffect(() => {
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=${APIkey}`;
     axios.get(url).then((res) => {
       setData(res.data);
-      console.log(res.data);
+      updateBackground(res.data.weather[0].main);
     });
   }, [location]);
 
@@ -46,9 +47,36 @@ const App = () => {
       const url = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${APIkey}`;
       axios.get(url).then((res) => {
         setData(res.data);
+        updateBackground(res.data.weather[0].main);
       });
     });
   };
+
+  const updateBackground = (weather) => {
+    switch (weather) {
+      case "Clear":
+        setWeatherClass("clear-sky");
+        break;
+      case "Clouds":
+        setWeatherClass("cloudy");
+        break;
+      case "Rain":
+        setWeatherClass("rainy");
+        break;
+      case "Snow":
+        setWeatherClass("snow");
+        break;
+      case "Thunderstorm":
+        setWeatherClass("thunderstorm");
+        break;
+      case "Haze":
+        setWeatherClass("haze");
+        break;
+      default:
+        setWeatherClass("clear-sky");
+    }
+  };
+
   if (!data) {
     return (
       <div>
@@ -83,7 +111,7 @@ const App = () => {
     case "Haze":
       icon = <BsCloudHaze2Fill className="text-4xl" />;
       break;
-    default:placeholder
+    default:
       icon = <IoMdSunny className="text-4xl" />;
   }
 
@@ -93,7 +121,7 @@ const App = () => {
   const time = `${hours}:${minutes}`;
 
   return (
-    <div className="body">
+    <div className={`body ${weatherClass}`}>
       <form onSubmit={handleSearch} className="mb-4 flex">
         <input
           type="text"
@@ -113,7 +141,7 @@ const App = () => {
         className="bg-blue-500 text-white p-2 rounded-md mb-4"
       >
         <div>
-          <IoMdLocate/>
+          <IoMdLocate />
         </div>
       </button>
       <div className="card">
