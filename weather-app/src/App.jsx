@@ -79,7 +79,7 @@ const App = () => {
 
   if (!data) {
     return (
-      <div>
+      <div className="flex items-center justify-center h-screen">
         <ImSpinner8 className="text-4xl animate-spin" />
       </div>
     );
@@ -122,31 +122,29 @@ const App = () => {
 
   return (
     <div className={`body ${weatherClass}`}>
-      <form onSubmit={handleSearch} className="mb-4 flex">
+      <form onSubmit={handleSearch} className="mb-4 flex flex-col md:flex-row  max-w-md mx-auto">
         <input
           type="text"
           name="location"
           placeholder="Enter city"
-          className="p-2 rounded-l-md"
+          className="p-2 rounded-t-md md:rounded-l-md md:rounded-t-none w-full"
         />
         <button
           type="submit"
-          className="bg-black-500 text-white p-2 rounded-r-md"
+          className="bg-black-500 text-white p-2 rounded-b-md md:rounded-r-md md:rounded-b-none border-2 border-white"
         >
           <IoMdSearch />
         </button>
       </form>
       <button
         onClick={getCurrentLocation}
-        className="bg-blue-500 text-white p-2 rounded-md mb-4"
+        className="bg-500 text-white p-2 rounded-md mb-4 border-2 border-white"
       >
-        <div>
-          <IoMdLocate />
-        </div>
+        <IoMdLocate />
       </button>
       <div className="card">
         <div className="top">
-          <div style={{ fontSize: "rem" }}>{icon}</div>
+          <div>{icon}</div>
           <div>
             <div className="text-4xl font-semibold">
               {data.name}, {data.sys.country}
@@ -160,7 +158,7 @@ const App = () => {
         </div>
         <div className="my-20">
           <div className="flex justify-center items-center">
-            <div className="text-[120px] leading-none font-light">
+            <div className="text-[60px] md:text-[120px] leading-none font-light">
               {parseInt(data.main.temp)}
             </div>
             <div className="text-4xl">
@@ -169,7 +167,7 @@ const App = () => {
           </div>
           <div className="capitalize text-center">{description}</div>
         </div>
-        <div className="max-w-[378px] mx-auto flex flex-col gap-y-6">
+        <div className="flex flex-col gap-y-4 max-w-xs mx-auto md:max-w-[378px] md:gap-y-6">
           <div className="flex justify-between">
             <div className="flex items-center gap-x-2">
               <div className="text-[20px]">
@@ -183,7 +181,7 @@ const App = () => {
               </div>
               <div className="flex">
                 Feels like
-                <div className="flex ml-2">{parseInt(data.main.feels_like)}</div>
+                <div className="ml-2">{parseInt(data.main.feels_like)}</div>
                 <TbTemperatureCelsius />
               </div>
             </div>
@@ -199,16 +197,16 @@ const App = () => {
               <div className="text-[20px]">
                 <BsWind />
               </div>
-                Wind <span className="ml-2">{data.wind.speed} m/s</span>
+              Wind <span className="ml-2">{data.wind.speed} m/s</span>
             </div>
           </div>
-         <div className="flex justify-between pb-10">
+          <div className="flex justify-between pb-10">
             <div className="flex items-center gap-x-2">
-              <div >Sunrise</div>
+              <div>Sunrise</div>
               <span className="ml-2">{new Date(data.sys.sunrise * 1000).toLocaleTimeString()}</span>
             </div>
             <div className="flex items-center gap-x-2">
-              <div className>Sunset</div>
+              <div>Sunset</div>
               <span className="ml-2">{new Date(data.sys.sunset * 1000).toLocaleTimeString()}</span>
             </div>
           </div>
